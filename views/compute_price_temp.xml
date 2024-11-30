@@ -1,0 +1,58 @@
+<odoo>
+    <record id="view_product_template_form_margin" model="ir.ui.view">
+        <field name="name">product.template.form.margin</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <!-- Insert your new fields after the pricing section -->
+            <xpath expr="//field[@name='default_code']" position="before">
+                <field name="margin"/>
+                <field name="shipping_cost"/>
+                <field name="our_cost"/>
+            </xpath>
+            <!-- Make standard_price invisible -->
+            <xpath expr="//field[@name='standard_price']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_product_template_tree_margin" model="ir.ui.view">
+        <field name="name">product.template.tree.margin</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="editable">bottom</attribute>
+            </xpath>
+            <xpath expr="//field[@name='list_price']" position="after">
+                <field name="margin"/>
+                <field name="shipping_cost"/>
+                <field name="our_cost"/>
+            </xpath>
+            <xpath expr="//field[@name='standard_price']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+
+
+
+
+
+
+    <!--<record id="view_product_template_tree_margin" model="ir.ui.view">
+        <field name="name">product.template.tree.margin</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='list_price']" position="after">
+                <field name="margin"/>
+                <field name="shipping_cost"/>
+            </xpath>
+        </field>
+    </record>
+    -->
+
+</odoo>

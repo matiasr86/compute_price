@@ -1,0 +1,37 @@
+<!-- views/product_views.xml -->
+<odoo>
+
+    <record id="view_product_product_tree_margin" model="ir.ui.view">
+        <field name="name">product.product.tree.margin</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_product_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='lst_price']" position="after">
+                <field name="margin"/>
+                <field name="shipping_cost"/>
+                <field name="our_cost"/>
+            </xpath>
+            <xpath expr="//field[@name='standard_price']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_normal_form_view" model="ir.ui.view">
+        <field name="name">product.product.form.margin</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='default_code']" position="before">
+                <field name="margin"/>
+                <field name="shipping_cost"/>
+                <field name="our_cost"/>
+            </xpath>
+            <xpath expr="//field[@name='standard_price']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>
